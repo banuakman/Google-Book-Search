@@ -3,15 +3,23 @@ import { useForm } from "react-hook-form";
 import api from "../../utils/API.js";
 
 export default function SearchBook() {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    const results = await api.searchBook(data.query);
-    console.log(results);
+  const onSubmit = async (book) => {
+    const {
+      data: { items },
+    } = await api.searchBook(book.query);
+    const results = items.map((item) => {
+      return {
+        title: item.volumeInfo.title,
+        authors: item.volumeInfo.authors,
+        description: item.volumeInfo.description,
+        img: item.volumeInfo.imageLinks,
+        link: item.volumeInfo.infoLink,
+      };
+    });
+    console.log("results", results);
   };
-
-  // console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <div>
