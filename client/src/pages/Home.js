@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import SearchBook from "../components/SearchBar";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -24,9 +25,10 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <h3 className="display-4">Search Results</h3>
+          <h3 className="display-4">CARDS HERE</h3>
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
 }
