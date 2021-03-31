@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = {
+const API = {
   searchBook: async (query) => {
     return await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=${query}`
@@ -22,4 +22,4 @@ const api = {
   },
 };
 
-export default api;
+export default API;

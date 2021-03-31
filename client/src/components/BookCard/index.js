@@ -1,23 +1,19 @@
 import React, { useEffect } from "react";
+import API from "../../utils/API";
 
 function BookCard({ book }) {
   useEffect(() => {
     console.log(book);
   });
 
-  const bookSave = (id) => {
-    book.id === id;
-
-    API.saveBook({
-      googleId: book.id,
-      title: book.volumeInfo.title,
-      subtitle: book.volumeInfo.subtitle,
-      link: book.volumeInfo.infoLink,
-      authors: book.volumeInfo.authors,
-      description: book.volumeInfo.description,
-      image: book.volumeInfo.imageLinks.thumbnail,
-    });
-  };
+  function bookSave(book) {
+    API.saveBook(book)
+      .then((res) => {
+        console.log("saved:", res);
+        //should I redirect to saved page?
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div className="container">
@@ -26,8 +22,13 @@ function BookCard({ book }) {
           <a href={book.link} target="\_blank">
             <h4>Title: {book.title}</h4>
           </a>
-          <button className="btn btn-success" onClick={bookSave}>
-            Save
+          <button
+            className="btn btn-success"
+            onClick={() => {
+              bookSave(book);
+            }}
+          >
+            Save this Book
           </button>
           <hr />
           <div className="row">
