@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import SearchBook from "../components/SearchBar";
 import Footer from "../components/Footer";
 import NavTabs from "../components/NavBar";
+import BookCard from "../components/BookCard";
 
 function Home() {
+  const [booklist, setBooklist] = useState([]);
+
   return (
     <Container fluid>
       <NavTabs />
@@ -18,7 +21,7 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <SearchBook />
+          <SearchBook setBooklist={setBooklist} />
         </Col>
       </Row>
       <Row>
@@ -28,7 +31,9 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <h3 className="display-4">CARDS HERE</h3>
+          {booklist.map((book) => {
+            return <BookCard book={book} />;
+          })}
         </Col>
       </Row>
       <Footer />

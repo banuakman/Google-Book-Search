@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import api from "../../utils/API.js";
 
-export default function SearchBook() {
+export default function SearchBook({ setBooklist }) {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (book) => {
@@ -19,6 +19,7 @@ export default function SearchBook() {
       };
     });
     console.log("results", results);
+    setBooklist(results);
   };
 
   return (

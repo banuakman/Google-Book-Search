@@ -8,7 +8,7 @@ function NavTabs() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark">
       <ul className="navbar-nav">
-        <li class="nav-item">
+        <li className="nav-item">
           <Link
             to="/"
             className={
@@ -18,7 +18,7 @@ function NavTabs() {
             Home
           </Link>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <Link
             to="/saved"
             className={
